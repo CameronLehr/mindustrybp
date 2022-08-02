@@ -1,0 +1,3 @@
+listenaddr: :8080
+sqlite: ./sqlite-database.db
+debug: true

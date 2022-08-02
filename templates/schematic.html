@@ -1,0 +1,38 @@
+<h1>Schematic {{.Title}}</h1>
+
+<head>
+    <link rel="stylesheet" href="static/template.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    <link rel="stylesheet" href="static/normalize.css" />
+</head>
+
+
+<body>
+    <div class="container">
+        <div class="card">
+            <div><img src="data:image/png;base64,{{.SchematicImage}}"></div>
+            <div class=" content ">
+                <div class="title ">{{ .Title }}</div>
+                <div class="creator ">{{ .Creator }}</div>
+                <div class="description">{{ .Description}}</div>
+                <div class="schematic">{{ .Schematic}}</div>
+                <div class="category">{{ .Category}}</div>
+            </div>
+            <div class="content2 ">
+                <!-- Like Button -->
+
+                <div class="likes ">
+                    <div><button class="button likebutton ">{{ .Likes | ToHumanReadable }} Likes</button></div>
+                </div>
+
+                <!-- Total Downloads Count-->
+                <div class="download ">
+                    <div> {{ .Downloads | ToHumanReadable }} Downloads</div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <script src="static/index.js "></script>
+</body>
