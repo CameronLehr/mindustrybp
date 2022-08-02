@@ -1,6 +1,6 @@
 # mindustrybp
 
-Mindustrybp is a website to share blueprints in [Mindustry](https://mindustrygame.github.io/) written in GO, and HTML.  
+Mindustrybp is a website to share blueprints for [Mindustry](https://mindustrygame.github.io/) written in GO, and HTML.  
 
 ## How to start the application on (default) port 8080.
 go run main.go
