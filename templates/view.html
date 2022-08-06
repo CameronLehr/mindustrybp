@@ -1,109 +1,271 @@
 <html>
-<!-- TODO -->
-<!-- Schematic.Image's on website need to link to their respective schematic pages-->
-<!-- Login Page, List of owned blueprints. Buttons to edit or create blueprints-->
-<!-- NOTES -->
-<!-- GET /blueprints (returns all blueprints)
+  <!-- TODO -->
+  <!-- Schematic.Image's on website need to link to their respective schematic pages-->
+  <!-- Login Page, List of owned blueprints. Buttons to edit or create blueprints-->
+  <!-- NOTES -->
+  <!-- GET /blueprints (returns all blueprints)
      GET /blueprints/12345 (returns blueprint with that ID)
      POST /blueprints (creates new blueprint based on body JSON)
      PATCH /blueprints/12345 (updates blueprint with that ID based on body JSON)-->
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<head>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="static/template.css" />
+    <link rel="stylesheet" href="static/output.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
+  </head>
 
-    <head>
-        <link rel="stylesheet" href="static/template.css" />
-        <link rel="stylesheet" href="static/output.css" />
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" />
-        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
-    </head>
-</head>
-
-<body class="bg-gray-50 dark:bg-slate-900 mx-auto container flex flex-col">
+  <body class="bg-gray-50 dark:bg-slate-900 mx-auto container flex flex-col">
     <div class="w-full h-8 mb-[12rem]">
-        <svg viewBox="-7.567 39.581 579.744 77.415" xmlns="http://www.w3.org/2000/svg">
-      <g style="font-style:normal;font-weight:800;font-size:72px;line-height:1;font-family:'Montserrat ExtraBold Alt1';font-variant-ligatures:none;text-align:center;text-anchor:middle"
-        transform="matrix(1, 0, 0, 1, -229.112595, -306.293335)">
-        <path
-          style="font-style:normal;font-weight:800;font-size:72px;line-height:1;font-family:'Montserrat ExtraBold Alt1';font-variant-ligatures:none;text-align:center;text-anchor:middle"
-          d="M290.809-31.176 277.777-7.848 277.849 0h13.104zM232.345 0h13.176v-6.984l-13.176-23.544zm46.728-50.4-17.28 29.088L244.08-50.4h-11.736l13.176 24.408 12.888 21.024h6.336l12.96-21.744L290.449-50.4z"
-          fill="#3d97ab" transform="matrix(.91 0 0 .91 26.744 406.932)"></path>
-        <path
-          style="font-style:normal;font-weight:800;font-size:72px;line-height:1;font-family:'Montserrat ExtraBold Alt1';font-variant-ligatures:none;text-align:center;text-anchor:middle"
-          d="M300.97-50.4V0h14.256v-50.4z" fill="#3a8ea3" transform="matrix(.91 0 0 .91 30.384 406.932)"></path>
-        <path
-          style="font-style:normal;font-weight:800;font-size:72px;line-height:1;font-family:'Montserrat ExtraBold Alt1';font-variant-ligatures:none;text-align:center;text-anchor:middle"
-          d="M325.438 0h13.968v-8.496L325.438-26.28zm33.984-50.4v9.144l13.968 16.848V-50.4Zm0 26.856L337.174-50.4h-11.736v6.696l13.968 16.848L361.654 0h11.736v-5.832l-13.968-17.784z"
-          fill="#36859a" transform="matrix(.91 0 0 .91 34.024 406.932)"></path>
-        <path
-          style="font-style:normal;font-weight:800;font-size:72px;line-height:1;font-family:'Montserrat ExtraBold Alt1';font-variant-ligatures:none;text-align:center;text-anchor:middle"
-          d="M431.973-38.52c-2.376-3.744-5.688-6.696-9.936-8.784-4.32-2.016-9.216-3.096-14.688-3.096h-23.832v11.376h23.256c4.32 0 7.776 1.224 10.368 3.672 2.592 2.52 3.96 5.904 3.96 10.152 0 4.32-1.368 7.704-3.96 10.152-2.592 2.448-6.048 3.672-10.368 3.672h-9v-13.392h-14.256V0h23.832c5.472 0 10.368-1.008 14.688-3.096 4.248-2.016 7.56-4.968 9.936-8.784 2.304-3.744 3.528-8.208 3.528-13.32 0-5.04-1.224-9.504-3.528-13.32z"
-          fill="#337d92" transform="matrix(.91 0 0 .91 37.664 406.932)"></path>
-        <path
-          style="font-style:normal;font-weight:800;font-size:72px;line-height:1;font-family:'Montserrat ExtraBold Alt1';font-variant-ligatures:none;text-align:center;text-anchor:middle"
-          d="M448.76-5.112c4.177 4.104 10.009 6.12 17.497 6.12 7.488 0 13.248-2.016 17.424-6.12 4.176-4.032 6.264-9.864 6.264-17.352V-50.4h-14.04v27.504c0 8.064-3.168 12.096-9.504 12.096-6.408 0-9.576-4.032-9.576-12.096V-50.4h-14.256v27.936c0 7.488 2.016 13.32 6.192 17.352z"
-          fill="#2f7489" transform="matrix(.91 0 0 .91 41.304 406.932)"></path>
-        <path
-          style="font-style:normal;font-weight:800;font-size:72px;line-height:1;font-family:'Montserrat ExtraBold Alt1';font-variant-ligatures:none;text-align:center;text-anchor:middle"
-          d="M505.364-.504c3.816 1.008 7.776 1.512 11.88 1.512 4.752 0 8.856-.72 12.24-2.16 3.312-1.44 5.832-3.456 7.56-5.904 1.656-2.448 2.52-5.184 2.52-8.208 0-3.456-.936-6.264-2.808-8.28-1.872-2.016-4.032-3.528-6.552-4.464-2.52-.936-5.688-1.8-9.504-2.664-3.456-.72-5.904-1.368-7.416-2.088-1.584-.648-2.304-1.656-2.304-3.024 0-1.296.648-2.376 1.944-3.24 1.296-.864 3.312-1.296 6.192-1.296 4.464 0 9.144 1.296 13.968 3.888l4.392-10.584c-2.448-1.44-5.328-2.52-8.496-3.24-3.24-.72-6.48-1.152-9.792-1.152-4.896 0-9 .72-12.312 2.16-3.312 1.44-5.832 3.456-7.488 5.904-1.728 2.448-2.52 5.256-2.52 8.28 0 3.528.864 6.336 2.736 8.352 1.8 2.088 3.96 3.6 6.552 4.536 2.52.936 5.688 1.8 9.504 2.592 3.456.792 5.904 1.512 7.488 2.232 1.584.72 2.376 1.728 2.376 3.168 0 2.736-2.736 4.104-8.208 4.104-2.88 0-5.832-.432-8.784-1.368-3.024-.864-5.616-2.088-7.848-3.6l-4.68 10.512c2.376 1.728 5.472 3.024 9.36 4.032z"
-          fill="#2c6b81" transform="matrix(.91 0 0 .91 44.944 406.932)"></path>
-        <path
-          style="font-style:normal;font-weight:800;font-size:72px;line-height:1;font-family:'Montserrat ExtraBold Alt1';font-variant-ligatures:none;text-align:center;text-anchor:middle"
-          d="M556.104-39.096V0h14.256v-39.096h15.408V-50.4h-45.144v11.304z" fill="#296278"
-          transform="matrix(.91 0 0 .91 48.584 406.932)"></path>
-        <path
-          style="font-style:normal;font-weight:800;font-size:72px;line-height:1;font-family:'Montserrat ExtraBold Alt1';font-variant-ligatures:none;text-align:center;text-anchor:middle"
-          d="M626.647-15.84c3.096-1.512 5.544-3.6 7.272-6.336 1.728-2.736 2.592-5.904 2.592-9.576 0-3.744-.936-7.056-2.736-9.864-1.872-2.808-4.464-4.968-7.776-6.48-3.384-1.512-7.344-2.304-11.88-2.304h-23.04v11.232h22.176c2.88 0 5.112.648 6.624 1.944 1.44 1.296 2.232 3.168 2.232 5.472 0 2.376-.792 4.176-2.232 5.472-1.512 1.296-3.744 1.872-6.624 1.872H591.08V0h14.256v-13.392h7.776L622.255 0h15.264z"
-          fill="#255970" transform="matrix(.91 0 0 .91 52.224 406.932)"></path>
-        <path
-          style="font-style:normal;font-weight:800;font-size:72px;line-height:1;font-family:'Montserrat ExtraBold Alt1';font-variant-ligatures:none;text-align:center;text-anchor:middle"
-          d="M670.673-18.072 689.969-50.4h-13.824l-11.952 20.016L652.24-50.4h-15.048l19.224 32.112V0h14.256z"
-          fill="#225167" transform="matrix(.91 0 0 .91 55.864 406.932)"></path>
-        <path
-          style="font-style:normal;font-weight:800;font-size:72px;line-height:1;font-family:'Montserrat ExtraBold Alt1';font-variant-ligatures:none;text-align:center;text-anchor:middle"
-          d="M738.817-21.528c-1.656-2.16-3.96-3.744-6.768-4.752 2.088-1.08 3.816-2.592 4.968-4.464 1.152-1.872 1.8-4.032 1.8-6.48 0-4.032-1.728-7.2-5.04-9.576-3.384-2.376-8.28-3.6-14.688-3.6h-25.776v10.296h23.904c4.752 0 7.2 1.656 7.2 4.824 0 3.312-2.448 4.896-7.2 4.896h-23.904v9.864h26.064c4.968 0 7.488 1.728 7.488 5.112 0 3.456-2.52 5.112-7.488 5.112h-26.064V0h27.216c6.696 0 11.808-1.152 15.408-3.6 3.528-2.376 5.328-5.76 5.328-10.224 0-3.024-.864-5.544-2.448-7.704z"
-          fill="#1e485f" transform="matrix(.91 0 0 .91 59.504 406.932)"></path>
-        <path
-          style="font-style:normal;font-weight:800;font-size:72px;line-height:1;font-family:'Montserrat ExtraBold Alt1';font-variant-ligatures:none;text-align:center;text-anchor:middle"
-          d="M791.416-41.616c-1.872-2.808-4.464-4.968-7.776-6.48-3.384-1.512-7.344-2.304-11.88-2.304h-23.04v11.232h22.176c2.88 0 5.112.648 6.624 1.944 1.44 1.296 2.232 3.168 2.232 5.472 0 2.376-.792 4.176-2.232 5.472-1.512 1.296-3.744 1.872-6.624 1.872H748.72V0h14.256v-13.176h8.784c4.536 0 8.496-.72 11.88-2.232 3.312-1.512 5.904-3.672 7.776-6.48 1.8-2.736 2.736-6.048 2.736-9.864 0-3.744-.936-7.056-2.736-9.864z"
-          fill="#1b3f56" transform="matrix(.91 0 0 .91 63.144 406.932)"></path>
-      </g>
-    </svg>
+      <svg
+        viewBox="-7.567 39.581 579.744 77.415"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <g
+          style="
+            font-style: normal;
+            font-weight: 800;
+            font-size: 72px;
+            line-height: 1;
+            font-family: 'Montserrat ExtraBold Alt1';
+            font-variant-ligatures: none;
+            text-align: center;
+            text-anchor: middle;
+          "
+          transform="matrix(1, 0, 0, 1, -229.112595, -306.293335)"
+        >
+          <path
+            style="
+              font-style: normal;
+              font-weight: 800;
+              font-size: 72px;
+              line-height: 1;
+              font-family: 'Montserrat ExtraBold Alt1';
+              font-variant-ligatures: none;
+              text-align: center;
+              text-anchor: middle;
+            "
+            d="M290.809-31.176 277.777-7.848 277.849 0h13.104zM232.345 0h13.176v-6.984l-13.176-23.544zm46.728-50.4-17.28 29.088L244.08-50.4h-11.736l13.176 24.408 12.888 21.024h6.336l12.96-21.744L290.449-50.4z"
+            fill="#3d97ab"
+            transform="matrix(.91 0 0 .91 26.744 406.932)"
+          ></path>
+          <path
+            style="
+              font-style: normal;
+              font-weight: 800;
+              font-size: 72px;
+              line-height: 1;
+              font-family: 'Montserrat ExtraBold Alt1';
+              font-variant-ligatures: none;
+              text-align: center;
+              text-anchor: middle;
+            "
+            d="M300.97-50.4V0h14.256v-50.4z"
+            fill="#3a8ea3"
+            transform="matrix(.91 0 0 .91 30.384 406.932)"
+          ></path>
+          <path
+            style="
+              font-style: normal;
+              font-weight: 800;
+              font-size: 72px;
+              line-height: 1;
+              font-family: 'Montserrat ExtraBold Alt1';
+              font-variant-ligatures: none;
+              text-align: center;
+              text-anchor: middle;
+            "
+            d="M325.438 0h13.968v-8.496L325.438-26.28zm33.984-50.4v9.144l13.968 16.848V-50.4Zm0 26.856L337.174-50.4h-11.736v6.696l13.968 16.848L361.654 0h11.736v-5.832l-13.968-17.784z"
+            fill="#36859a"
+            transform="matrix(.91 0 0 .91 34.024 406.932)"
+          ></path>
+          <path
+            style="
+              font-style: normal;
+              font-weight: 800;
+              font-size: 72px;
+              line-height: 1;
+              font-family: 'Montserrat ExtraBold Alt1';
+              font-variant-ligatures: none;
+              text-align: center;
+              text-anchor: middle;
+            "
+            d="M431.973-38.52c-2.376-3.744-5.688-6.696-9.936-8.784-4.32-2.016-9.216-3.096-14.688-3.096h-23.832v11.376h23.256c4.32 0 7.776 1.224 10.368 3.672 2.592 2.52 3.96 5.904 3.96 10.152 0 4.32-1.368 7.704-3.96 10.152-2.592 2.448-6.048 3.672-10.368 3.672h-9v-13.392h-14.256V0h23.832c5.472 0 10.368-1.008 14.688-3.096 4.248-2.016 7.56-4.968 9.936-8.784 2.304-3.744 3.528-8.208 3.528-13.32 0-5.04-1.224-9.504-3.528-13.32z"
+            fill="#337d92"
+            transform="matrix(.91 0 0 .91 37.664 406.932)"
+          ></path>
+          <path
+            style="
+              font-style: normal;
+              font-weight: 800;
+              font-size: 72px;
+              line-height: 1;
+              font-family: 'Montserrat ExtraBold Alt1';
+              font-variant-ligatures: none;
+              text-align: center;
+              text-anchor: middle;
+            "
+            d="M448.76-5.112c4.177 4.104 10.009 6.12 17.497 6.12 7.488 0 13.248-2.016 17.424-6.12 4.176-4.032 6.264-9.864 6.264-17.352V-50.4h-14.04v27.504c0 8.064-3.168 12.096-9.504 12.096-6.408 0-9.576-4.032-9.576-12.096V-50.4h-14.256v27.936c0 7.488 2.016 13.32 6.192 17.352z"
+            fill="#2f7489"
+            transform="matrix(.91 0 0 .91 41.304 406.932)"
+          ></path>
+          <path
+            style="
+              font-style: normal;
+              font-weight: 800;
+              font-size: 72px;
+              line-height: 1;
+              font-family: 'Montserrat ExtraBold Alt1';
+              font-variant-ligatures: none;
+              text-align: center;
+              text-anchor: middle;
+            "
+            d="M505.364-.504c3.816 1.008 7.776 1.512 11.88 1.512 4.752 0 8.856-.72 12.24-2.16 3.312-1.44 5.832-3.456 7.56-5.904 1.656-2.448 2.52-5.184 2.52-8.208 0-3.456-.936-6.264-2.808-8.28-1.872-2.016-4.032-3.528-6.552-4.464-2.52-.936-5.688-1.8-9.504-2.664-3.456-.72-5.904-1.368-7.416-2.088-1.584-.648-2.304-1.656-2.304-3.024 0-1.296.648-2.376 1.944-3.24 1.296-.864 3.312-1.296 6.192-1.296 4.464 0 9.144 1.296 13.968 3.888l4.392-10.584c-2.448-1.44-5.328-2.52-8.496-3.24-3.24-.72-6.48-1.152-9.792-1.152-4.896 0-9 .72-12.312 2.16-3.312 1.44-5.832 3.456-7.488 5.904-1.728 2.448-2.52 5.256-2.52 8.28 0 3.528.864 6.336 2.736 8.352 1.8 2.088 3.96 3.6 6.552 4.536 2.52.936 5.688 1.8 9.504 2.592 3.456.792 5.904 1.512 7.488 2.232 1.584.72 2.376 1.728 2.376 3.168 0 2.736-2.736 4.104-8.208 4.104-2.88 0-5.832-.432-8.784-1.368-3.024-.864-5.616-2.088-7.848-3.6l-4.68 10.512c2.376 1.728 5.472 3.024 9.36 4.032z"
+            fill="#2c6b81"
+            transform="matrix(.91 0 0 .91 44.944 406.932)"
+          ></path>
+          <path
+            style="
+              font-style: normal;
+              font-weight: 800;
+              font-size: 72px;
+              line-height: 1;
+              font-family: 'Montserrat ExtraBold Alt1';
+              font-variant-ligatures: none;
+              text-align: center;
+              text-anchor: middle;
+            "
+            d="M556.104-39.096V0h14.256v-39.096h15.408V-50.4h-45.144v11.304z"
+            fill="#296278"
+            transform="matrix(.91 0 0 .91 48.584 406.932)"
+          ></path>
+          <path
+            style="
+              font-style: normal;
+              font-weight: 800;
+              font-size: 72px;
+              line-height: 1;
+              font-family: 'Montserrat ExtraBold Alt1';
+              font-variant-ligatures: none;
+              text-align: center;
+              text-anchor: middle;
+            "
+            d="M626.647-15.84c3.096-1.512 5.544-3.6 7.272-6.336 1.728-2.736 2.592-5.904 2.592-9.576 0-3.744-.936-7.056-2.736-9.864-1.872-2.808-4.464-4.968-7.776-6.48-3.384-1.512-7.344-2.304-11.88-2.304h-23.04v11.232h22.176c2.88 0 5.112.648 6.624 1.944 1.44 1.296 2.232 3.168 2.232 5.472 0 2.376-.792 4.176-2.232 5.472-1.512 1.296-3.744 1.872-6.624 1.872H591.08V0h14.256v-13.392h7.776L622.255 0h15.264z"
+            fill="#255970"
+            transform="matrix(.91 0 0 .91 52.224 406.932)"
+          ></path>
+          <path
+            style="
+              font-style: normal;
+              font-weight: 800;
+              font-size: 72px;
+              line-height: 1;
+              font-family: 'Montserrat ExtraBold Alt1';
+              font-variant-ligatures: none;
+              text-align: center;
+              text-anchor: middle;
+            "
+            d="M670.673-18.072 689.969-50.4h-13.824l-11.952 20.016L652.24-50.4h-15.048l19.224 32.112V0h14.256z"
+            fill="#225167"
+            transform="matrix(.91 0 0 .91 55.864 406.932)"
+          ></path>
+          <path
+            style="
+              font-style: normal;
+              font-weight: 800;
+              font-size: 72px;
+              line-height: 1;
+              font-family: 'Montserrat ExtraBold Alt1';
+              font-variant-ligatures: none;
+              text-align: center;
+              text-anchor: middle;
+            "
+            d="M738.817-21.528c-1.656-2.16-3.96-3.744-6.768-4.752 2.088-1.08 3.816-2.592 4.968-4.464 1.152-1.872 1.8-4.032 1.8-6.48 0-4.032-1.728-7.2-5.04-9.576-3.384-2.376-8.28-3.6-14.688-3.6h-25.776v10.296h23.904c4.752 0 7.2 1.656 7.2 4.824 0 3.312-2.448 4.896-7.2 4.896h-23.904v9.864h26.064c4.968 0 7.488 1.728 7.488 5.112 0 3.456-2.52 5.112-7.488 5.112h-26.064V0h27.216c6.696 0 11.808-1.152 15.408-3.6 3.528-2.376 5.328-5.76 5.328-10.224 0-3.024-.864-5.544-2.448-7.704z"
+            fill="#1e485f"
+            transform="matrix(.91 0 0 .91 59.504 406.932)"
+          ></path>
+          <path
+            style="
+              font-style: normal;
+              font-weight: 800;
+              font-size: 72px;
+              line-height: 1;
+              font-family: 'Montserrat ExtraBold Alt1';
+              font-variant-ligatures: none;
+              text-align: center;
+              text-anchor: middle;
+            "
+            d="M791.416-41.616c-1.872-2.808-4.464-4.968-7.776-6.48-3.384-1.512-7.344-2.304-11.88-2.304h-23.04v11.232h22.176c2.88 0 5.112.648 6.624 1.944 1.44 1.296 2.232 3.168 2.232 5.472 0 2.376-.792 4.176-2.232 5.472-1.512 1.296-3.744 1.872-6.624 1.872H748.72V0h14.256v-13.176h8.784c4.536 0 8.496-.72 11.88-2.232 3.312-1.512 5.904-3.672 7.776-6.48 1.8-2.736 2.736-6.048 2.736-9.864 0-3.744-.936-7.056-2.736-9.864z"
+            fill="#1b3f56"
+            transform="matrix(.91 0 0 .91 63.144 406.932)"
+          ></path>
+        </g>
+      </svg>
     </div>
     <div class="flex flex-row flex-wrap">
-        {{ range $index, $Schematic := . }}
-        <ul role="list" class="flex flex-row flex-wrap">
-            <li class="col-span-1 flex flex-col text-center bg-white dark:bg-slate-400 rounded-lg shadow divide-y divide-gray-200 min-w-[24rem] mr-4 mb-4">
-                <div class="flex-1 flex flex-col">
-                    <a href="/{{$Schematic.ID}}" target="_blank"><img class="w-full h-32 flex-shrink-0" src="{{$Schematic.SchematicImage}}" alt="{{$Schematic.Title}} Image"></h>
-                        <h3 class="mt-2 text-gray-900 text-lg font-medium">{{ $Schematic.Title }}</h3>
-                        <dl class="mt-1 flex-grow flex flex-col justify-between">
-                            <dt class="sr-only">Title</dt>
-                            <dd class="text-gray-700 text-base">{{ $Schematic.Creator }}</dd>
-                            <dt class="sr-only">Role</dt>
-                            <dd class="mt-3">
-                                <span class="px-2 py-1 text-green-800 text-xs font-medium bg-green-100 rounded-full"></span>
-                            </dd>
-                        </dl>
-                </div>
-                <div>
-                    <div class="-mt-px flex divide-x divide-gray-200">
-                        <div class="w-0 flex-1 flex">
-                            <svg class="w-5 h-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-              </svg>
-                            <span>{{$Schematic.Downloads | ToHumanReadable }}</span>
-                        </div>
-                        <div class="-ml-px w-0 flex-1 flex">
-                            <svg class="w-5 h-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-              </svg>
-                            <span>Likes</span>
-                        </div>
-                    </div>
-                </div>
-            </li>
-        </ul>
-        {{ end }}
+      {{ range $index, $Schematic := . }}
+      <ul role="list" class="flex flex-row flex-wrap">
+        <li
+          class="col-span-1 flex flex-col text-center bg-white dark:bg-slate-400 rounded-lg shadow divide-y divide-gray-200 min-w-[24rem] mr-4 mb-4"
+        >
+          <div class="flex-1 flex flex-col">
+            <a href="/{{$Schematic.ID}}" target="_blank"
+              ><img
+                class="w-full h-32 flex-shrink-0"
+                src="{{$Schematic.SchematicImage}}"
+                alt="{{$Schematic.Title}} Image"
+              />
+              <h3 class="mt-2 text-gray-900 text-lg font-medium">
+                {{ $Schematic.Title }}
+              </h3>
+              <dl class="mt-1 flex-grow flex flex-col justify-between">
+                <dt class="sr-only">Title</dt>
+                <dd class="text-gray-700 text-base">
+                  {{ $Schematic.Creator }}
+                </dd>
+                <dt class="sr-only">Role</dt>
+                <dd class="mt-3">
+                  <span
+                    class="px-2 py-1 text-green-800 text-xs font-medium bg-green-100 rounded-full"
+                  ></span>
+                </dd>
+              </dl>
+            </a>
+          </div>
+          <div>
+            <div class="-mt-px flex divide-x divide-gray-200">
+              <div class="w-0 flex-1 flex">
+                <svg
+                  class="w-5 h-5 text-gray-400"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                  aria-hidden="true"
+                ></svg>
+                <span>{{$Schematic.Downloads | ToHumanReadable }}</span>
+              </div>
+              <div class="-ml-px w-0 flex-1 flex">
+                <svg
+                  class="w-5 h-5 text-gray-400"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                  aria-hidden="true"
+                ></svg>
+                <span>Likes</span>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+      {{ end }}
     </div>
-</body>
-
+  </body>
 </html>
