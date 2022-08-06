@@ -2,6 +2,7 @@ package routes
 
 import (
 	"database/sql"
+	"html/template"
 	"math"
 	"mindustrybp/config"
 	"mindustrybp/services"
@@ -9,8 +10,8 @@ import (
 	"mindustrybp/services/s2i"
 	"net/http"
 	"strconv"
-	"text/template"
 
+	"github.com/gernest/hot"
 	"github.com/gorilla/mux"
 )
 
@@ -20,7 +21,7 @@ type Routes struct {
 
 	Router *mux.Router
 
-	templates *template.Template
+	templates *hot.Template
 
 	services.ServiceGroup
 }
@@ -30,11 +31,25 @@ func New(cfg *config.Config, db *sql.DB) (*Routes, error) {
 		"ToHumanReadable": ToHumanReadable,
 	}
 
+	config := &hot.Config{
+		Watch:          true,
+		BaseName:       "templates",
+		Dir:            "templates",
+		FilesExtension: []string{".html"},
+		Funcs:          templateMap,
+	}
+
+	templates, err := hot.New(config)
+
+	if err != nil {
+		return nil, err
+	}
+
 	r := &Routes{
 		cfg:       cfg,
 		db:        db,
 		Router:    mux.NewRouter(),
-		templates: template.Must(template.New("").Funcs(templateMap).ParseGlob("templates/*.html")),
+		templates: templates,
 	}
 
 	sg, err := DefaultGroup(db)

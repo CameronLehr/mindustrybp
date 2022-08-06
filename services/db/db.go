@@ -64,18 +64,6 @@ func (db *DB) GetSchematic(id int) (models.Schematic, error) {
 	defer rows.Close()
 	log.Println("Rows:", rows)
 	schematic := models.Schematic{}
-	for rows.Next() {
-		tmp := models.Schematic{}
-		timeUpload := ""
-		lastUpdated := ""
-		err = rows.Scan(&tmp.ID, &tmp.Title, &tmp.Creator, &tmp.Description, &tmp.Schematic, &timeUpload, &lastUpdated, &tmp.SchematicImage, &tmp.Likes, &tmp.Downloads, &tmp.Category)
-		if err != nil {
-			return models.Schematic{}, err
-		}
-		tmp.TimeUploaded, _ = time.Parse("2006-01-02T15:04:05-0700", timeUpload)
-		tmp.LastUpdated, _ = time.Parse("2006-01-02T15:04:05-0700", lastUpdated)
-		schematic = tmp
-	}
 	log.Println("models.Schematic:", schematic)
 	return schematic, nil
 }
@@ -87,6 +75,41 @@ func (db *DB) UpdateSchematic(schematic models.Schematic) (models.Schematic, err
 	}
 	_, err = stmt.Exec(schematic.Title, schematic.Creator, schematic.Description, schematic.Schematic, schematic.SchematicImage, schematic.Category, schematic.ID)
 	return schematic, err
+}
+
+func (db *DB) DeleteSchematic(id int) error {
+	stmt, err := db.db.Prepare("DELETE FROM schematics WHERE id=?")
+	if err != nil {
+		return err
+	}
+	_, err = stmt.Exec(id)
+	return err
+}
+
+func (db *DB) SearchSchematic(search string) ([]models.Schematic, error) {
+	getSchematicsSQL, err := db.db.Prepare(`SELECT * FROM schematics WHERE title LIKE '%?%';`)
+	if err != nil {
+		return nil, err
+	}
+	rows, err := getSchematicsSQL.Query(search)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+	schematics := []models.Schematic{}
+	for rows.Next() {
+		tmp := models.Schematic{}
+		timeUpload := ""
+		lastUpdated := ""
+		err = rows.Scan(&tmp.ID, &tmp.Title, &tmp.Creator, &tmp.Description, &tmp.Schematic, &timeUpload, &lastUpdated, &tmp.SchematicImage, &tmp.Likes, &tmp.Downloads, &tmp.Category)
+		if err != nil {
+			return nil, err
+		}
+		tmp.TimeUploaded, _ = time.Parse("2006-01-02T15:04:05-0700", timeUpload)
+		tmp.LastUpdated, _ = time.Parse("2006-01-02T15:04:05-0700", lastUpdated)
+		schematics = append(schematics, tmp)
+	}
+	return schematics, nil
 }
 
 //Create Table (Only use for initial build of DB)

@@ -9,7 +9,7 @@ import (
 
 // Render a template given a Page
 func (r *Routes) renderTemplate(w http.ResponseWriter, tmpl string, p interface{}) {
-	err := r.templates.ExecuteTemplate(w, tmpl, p)
+	err := r.templates.Execute(w, tmpl, p)
 
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
