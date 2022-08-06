@@ -1,27 +1,27 @@
-<html>
-<!-- TODO -->
-<!-- Schematic.Image's on website need to link to their respective schematic pages-->
-<!-- Login Page, List of owned blueprints. Buttons to edit or create blueprints-->
-<!-- NOTES -->
-<!-- GET /blueprints (returns all blueprints)
+<<<<<<< HEAD <html>
+    <!-- TODO -->
+    <!-- Schematic.Image's on website need to link to their respective schematic pages-->
+    <!-- Login Page, List of owned blueprints. Buttons to edit or create blueprints-->
+    <!-- NOTES -->
+    <!-- GET /blueprints (returns all blueprints)
      GET /blueprints/12345 (returns blueprint with that ID)
      POST /blueprints (creates new blueprint based on body JSON)
      PATCH /blueprints/12345 (updates blueprint with that ID based on body JSON)-->
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <head>
-        <link rel="stylesheet" href="static/template.css" />
-        <link rel="stylesheet" href="static/output.css" />
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" />
-        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
-    </head>
-</head>
 
-<body class="bg-gray-50 dark:bg-slate-900 mx-auto container flex flex-col">
-    <div class="w-full h-8 mb-[12rem]">
-        <svg viewBox="-7.567 39.581 579.744 77.415" xmlns="http://www.w3.org/2000/svg">
+        <head>
+            <link rel="stylesheet" href="static/template.css" />
+            <link rel="stylesheet" href="static/output.css" />
+            <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" />
+            <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+        </head>
+    </head>
+
+    <body class="bg-gray-50 dark:bg-slate-900 mx-auto container flex flex-col">
+        <div class="w-full h-8 mb-[12rem]">
+            <svg viewBox="-7.567 39.581 579.744 77.415" xmlns="http://www.w3.org/2000/svg">
       <g style="font-style:normal;font-weight:800;font-size:72px;line-height:1;font-family:'Montserrat ExtraBold Alt1';font-variant-ligatures:none;text-align:center;text-anchor:middle"
         transform="matrix(1, 0, 0, 1, -229.112595, -306.293335)">
         <path
@@ -69,41 +69,41 @@
           fill="#1b3f56" transform="matrix(.91 0 0 .91 63.144 406.932)"></path>
       </g>
     </svg>
-    </div>
-    <div class="flex flex-row flex-wrap">
-        {{ range $index, $Schematic := . }}
-        <ul role="list" class="flex flex-row flex-wrap">
-            <li class="col-span-1 flex flex-col text-center bg-white dark:bg-slate-400 rounded-lg shadow divide-y divide-gray-200 min-w-[24rem] mr-4 mb-4">
-                <div class="flex-1 flex flex-col">
-                    <a href="/{{$Schematic.ID}}" target="_blank"><img class="w-full h-32 flex-shrink-0" src="{{$Schematic.SchematicImage}}" alt="{{$Schematic.Title}} Image"></a>
-                    <h3 class="mt-2 text-gray-900 text-lg font-medium">{{ $Schematic.Title }}</h3>
-                    <dl class="mt-1 flex-grow flex flex-col justify-between">
-                        <dt class="sr-only">Title</dt>
-                        <dd class="text-gray-700 text-base">{{ $Schematic.Creator }}</dd>
-                        <dt class="sr-only">Creator</dt>
-                        <dd class="mt-3">
-                            <span class="px-2 py-1 text-green-800 text-xs font-medium bg-green-100 rounded-full"></span>
-                        </dd>
-                    </dl>
-                </div>
-                <div>
-                    <div class="-mt-px flex divide-x divide-gray-200">
-                        <div class="w-0 flex-1 flex justify-center">
-                            <svg class="w-5 h-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+        </div>
+        <div class="flex flex-row flex-wrap">
+            {{ range $index, $Schematic := . }}
+            <ul role="list" class="flex flex-row flex-wrap">
+                <li class="col-span-1 flex flex-col text-center bg-white dark:bg-slate-400 rounded-lg shadow divide-y divide-gray-200 min-w-[24rem] mr-4 mb-4">
+                    <div class="flex-1 flex flex-col">
+                        <a href="/{{$Schematic.ID}}" target="_blank"><img class="w-full h-32 flex-shrink-0" src="{{$Schematic.SchematicImage}}" alt="{{$Schematic.Title}} Image"></h>
+                            <h3 class="mt-2 text-gray-900 text-lg font-medium">{{ $Schematic.Title }}</h3>
+                            <dl class="mt-1 flex-grow flex flex-col justify-between">
+                                <dt class="sr-only">Title</dt>
+                                <dd class="text-gray-700 text-base">{{ $Schematic.Creator }}</dd>
+                                <dt class="sr-only">Role</dt>
+                                <dd class="mt-3">
+                                    <span class="px-2 py-1 text-green-800 text-xs font-medium bg-green-100 rounded-full"></span>
+                                </dd>
+                            </dl>
+                    </div>
+                    <div>
+                        <div class="-mt-px flex divide-x divide-gray-200">
+                            <div class="w-0 flex-1 flex">
+                                <svg class="w-5 h-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
               </svg>
-                            <span>{{$Schematic.Downloads | ToHumanReadable }} Downloads</span>
-                        </div>
-                        <div class="w-0 flex-1 flex justify-center">
-                            <svg class="w-5 h-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                <span>{{$Schematic.Downloads | ToHumanReadable }}</span>
+                            </div>
+                            <div class="-ml-px w-0 flex-1 flex">
+                                <svg class="w-5 h-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
               </svg>
-                            <span>{{$Schematic.Likes | ToHumanReadable }} Likes</span>
+                                <span>Likes</span>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </li>
-        </ul>
-        {{ end }}
-    </div>
-</body>
+                </li>
+            </ul>
+            {{ end }}
+        </div>
+    </body>
 
-</html>
+    </html>
