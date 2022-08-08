@@ -69,19 +69,24 @@ func (r *Routes) EditSchematic(w http.ResponseWriter, req *http.Request) {
 	creator := req.FormValue("creator")
 	description := req.FormValue("description")
 	schematic := req.FormValue("schematic")
-	schematicImage := req.FormValue("schematicImage")
 	category := req.FormValue("category")
-	fmt.Println(title, creator, description, schematic, schematicImage, category)
+	fmt.Println(title, creator, description, schematic, category)
 	test := models.Schematic{
-		ID:             int64(idInt),
-		Title:          title,
-		Creator:        creator,
-		Description:    description,
-		Schematic:      schematic,
-		SchematicImage: schematicImage,
-		Category:       category,
+		ID:          int64(idInt),
+		Title:       title,
+		Creator:     creator,
+		Description: description,
+		Schematic:   schematic,
+		Category:    category,
 	}
 
+	image, err := r.GenerateImage(test.Schematic)
+	if err != nil {
+		w.WriteHeader(http.StatusBadRequest)
+		w.Write([]byte(err.Error()))
+		return
+	}
+	test.SchematicImage = image
 	_, err = r.UpdateSchematic(test)
 
 	// TODO: The schematic may just not exist, or this could be a real db failure
